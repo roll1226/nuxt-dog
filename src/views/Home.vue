@@ -1,18 +1,33 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div class="loading"></div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
-  name: "home",
-  components: {
-    HelloWorld
-  }
+  name: "home"
 };
 </script>
+
+<style scoped>
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loading {
+  display: block;
+  width: 100px;
+  height: 100px;
+  border: solid 5px #11f;
+  border-bottom: transparent;
+  border-left: transparent;
+  transform-origin: center center;
+  animation: loading 1s linear 0s forwards infinite;
+  border-radius: 60%;
+}
+</style>

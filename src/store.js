@@ -7,14 +7,22 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     imagelist: {},
-    list: {}
+    list: {},
+    loading: false
   },
   mutations: {
     ok(state, payload) {
       state.imagelist = payload.jsonName.data.message;
+      state.loading = false;
     },
     list(state, payload) {
       state.list = payload.jsonAll.data.message;
+    },
+    setLoading(state, payload) {
+      state.loading = payload;
+    },
+    resetImages(state) {
+      state.imagelist = {};
     }
   },
   actions: {
@@ -42,6 +50,9 @@ export default new Vuex.Store({
     },
     list(state) {
       return state.list;
+    },
+    loading(state) {
+      return state.loading;
     }
   }
 });

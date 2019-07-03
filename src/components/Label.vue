@@ -20,14 +20,17 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      dogname: ""
+      dogname: "",
+      loadimage: ""
     };
   },
   mounted() {
     this.$store.dispatch("getlist");
   },
   methods: {
-    searchapi: function() {
+    searchapi() {
+      this.$store.commit("resetImages");
+      this.$store.commit("setLoading", true);
       this.$store.dispatch("searchapi", this.dogname);
     }
   },
